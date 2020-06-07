@@ -19,5 +19,5 @@ from afisha import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.blank_start_page)
+    path('', views.index_page)
 ]
