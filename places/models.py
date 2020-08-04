@@ -11,11 +11,20 @@ class Place(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Экскурсия'
+        verbose_name_plural = 'Экскурсии'
+
 
 class Image(models.Model):
-    place = models.ForeignKey(Place, verbose_name='название экскурсии', on_delete=models.CASCADE, related_name='excursion_image')
-    excursion_image = models.ImageField(verbose_name='Фотографии экскурсии', upload_to='excursion_image', null=True)
+    place = models.ForeignKey(Place, verbose_name='название экскурсии', on_delete=models.CASCADE, related_name='image')
+    image = models.ImageField(verbose_name='Фотографии экскурсии', upload_to='image', null=True)
     image_number = models.PositiveSmallIntegerField(verbose_name='Номер картинки')
 
     def __str__(self):
-        return f'{self.image_number} {self.place}'
+        return self.place
+
+    class Meta:
+        verbose_name = 'Изображение экскурсии'
+        verbose_name_plural = 'Изображения экскурсии'
+        ordering = ['place', 'image_number']
