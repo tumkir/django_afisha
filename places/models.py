@@ -19,10 +19,10 @@ class Place(models.Model):
 class Image(models.Model):
     place = models.ForeignKey(Place, verbose_name='название экскурсии', on_delete=models.CASCADE, related_name='image')
     image = models.ImageField(verbose_name='Фотографии экскурсии', upload_to='image', null=True)
-    image_number = models.PositiveSmallIntegerField(verbose_name='Номер картинки')
+    image_number = models.PositiveSmallIntegerField(verbose_name='Позиция')
 
     def __str__(self):
-        return self.place
+        return f'{self.image_number} {self.place}'
 
     class Meta:
         verbose_name = 'Изображение экскурсии'
