@@ -1,6 +1,7 @@
-# Интерактивную карту Москвы
+# Интерактивная карта Москвы
 
-### Как запустить
+
+## Как запустить
 
 - Скачайте код
 - Установите зависимости командой `pip install -r requirements.txt`
@@ -13,6 +14,6 @@ python3 -c 'from django.core.management.utils import get_random_secret_key; prin
 - Создайте базу данных командой `python3 manage.py migrate`
 - Запустите сервер командой `python3 manage.py runserver`
 
-### Цель проекта
+## Цель проекта
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
