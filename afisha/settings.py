@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='7a6x#eqfue+nr5+lu2tm76q8rb5631g_bb
 DEBUG = os.getenv("DEBUG", default=False) == 'True'
 
 
-ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', '*')]
 
 
 # Application definition
