@@ -9,7 +9,7 @@ Cайт о самых интересных местах в Москве. [При
 - В корне проекта создайте `.env` файл и пропишите туда переменные окружения:
   - [`SECRET_KEY`](https://docs.djangoproject.com/en/3.1/ref/settings/#secret-key) в формате `SECRET_KEY='значение'`
   - [`DEBUG`](https://docs.djangoproject.com/en/3.1/ref/settings/#debug) — впишите `True` для включения дебаг-режима
-  - [`ALLOWED_HOSTS`](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts) — адрес хоста/домена, для которых может работать текущий сайт. По умолчанию `'*'` (все хосты)
+  - [`ALLOWED_HOSTS`](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts) — адрес хоста/домена, для которых может работать текущий сайт. Если проект при запуске выдаёт ошибку `Bad Request (400)`, то скорее всего причина в неверно прописанном параметре `ALLOWED_HOSTS`.
 
 Получить секретный ключ Django можно командой
 ```bash

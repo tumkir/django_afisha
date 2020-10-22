@@ -29,8 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='7a6x#eqfue+nr5+lu2tm76q8rb5631g_bb
 DEBUG = os.getenv("DEBUG", default=False) == 'True'
 
 
-ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', '*')]
-
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]
 
 # Application definition
 
@@ -128,7 +127,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root/')
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
