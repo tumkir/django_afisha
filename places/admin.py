@@ -1,7 +1,8 @@
-from django.contrib import admin
-from .models import Place, Image
-from django.utils.html import format_html
 from adminsortable2.admin import SortableInlineAdminMixin
+from django.contrib import admin
+from django.utils.html import format_html
+
+from .models import Image, Place
 
 
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -12,7 +13,9 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
 
     def get_preview(self, image):
         image = image.image
-        return format_html(f'<img src="{image.url}" height=200 />')
+        if image:
+            return format_html(f'<img src="{image.url}" height=200 />')
+        return "Здесь будет превью, когда вы загрузите файл"
 
 
 @admin.register(Place)
