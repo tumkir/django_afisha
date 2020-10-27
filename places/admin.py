@@ -14,7 +14,7 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     def get_preview(self, image):
         image = image.image
         if image:
-            return format_html(f'<img src="{image.url}" height=200 />')
+            return format_html('<img src="{}" height=200 />', image.url)
         return "Здесь будет превью, когда вы загрузите файл"
 
 
