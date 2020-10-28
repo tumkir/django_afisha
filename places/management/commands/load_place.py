@@ -1,3 +1,5 @@
+import os
+
 import requests
 from django.core.files.base import ContentFile
 from django.core.management.base import BaseCommand
@@ -34,7 +36,7 @@ class Command(BaseCommand):
                 image_number=image_number,
             )
 
-            image_filename = image_url[image_url.rfind('/') + 1:]
+            image_filename = os.path.split(image_url)[-1]
 
             place_image.image.save(image_filename, image_content, save=True)
 
