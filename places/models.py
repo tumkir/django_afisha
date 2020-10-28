@@ -18,8 +18,8 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    place = models.ForeignKey(Place, verbose_name='Экскурсия', on_delete=models.CASCADE, related_name='image')
-    image = models.ImageField(verbose_name='Картинка', upload_to='image')
+    place = models.ForeignKey(Place, verbose_name='Экскурсия', on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(verbose_name='Картинка', upload_to='images')
     image_number = models.PositiveSmallIntegerField(verbose_name='Позиция', default=0)
 
     def __str__(self):

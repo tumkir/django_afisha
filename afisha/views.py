@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
-
 from places.models import Place
 
 
@@ -31,7 +30,7 @@ def place_data(request, place_id):
 
     place_data = {
         'title': place.title,
-        'imgs': [image.image.url for image in place.image.all()],
+        'imgs': [image.image.url for image in place.images.all()],
         'description_short': place.description_short,
         'description_long': place.description_long,
         'coordinates': {
