@@ -17,12 +17,14 @@ class Command(BaseCommand):
         response.raise_for_status()
         place_data = response.json()
 
-        place, created = Place.objects.get_or_create(
+        place, created = Place.objects.update_or_create(
             title=place_data['title'],
-            description_short=place_data['description_short'],
-            description_long=place_data['description_long'],
             longitude=place_data['coordinates']['lng'],
             latitude=place_data['coordinates']['lat'],
+            defaults={
+                'short_description': place_data['description_short'],
+                'long_description': place_data['description_long'],
+            }
         )
 
         for image_number, image_url in enumerate(place_data['imgs'], 1):
@@ -31,7 +33,7 @@ class Command(BaseCommand):
 
             image_content = ContentFile(response.content)
 
-            place_image, created = Image.objects.get_or_create(
+            place_image, created_image = Image.objects.get_or_create(
                 place=place,
                 image_number=image_number,
             )
@@ -40,4 +42,7 @@ class Command(BaseCommand):
 
             place_image.image.save(image_filename, image_content, save=True)
 
-        self.stdout.write(self.style.SUCCESS(f'Successfully loaded place "{place}"'))
+        if created:
+            self.stdout.write(self.style.SUCCESS(f'Successfully loaded place "{place}"'))
+        else:
+            self.stdout.write(self.style.SUCCESS(f'Place "{place}" already exists'))
